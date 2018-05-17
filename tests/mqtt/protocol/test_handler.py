@@ -18,7 +18,7 @@ from hbmqtt.mqtt.pubcomp import PubcompPacket
 
 formatter = "[%(asctime)s] %(name)s {%(filename)s:%(lineno)d} %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.DEBUG, format=formatter)
-log = logging.getLogger(__name__)
+log = logging.getLogger("MyLogger")
 
 
 def rand_packet_id():

@@ -43,7 +43,7 @@ default_config = {
     }
 }
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 
 def main(*args, **kwargs):

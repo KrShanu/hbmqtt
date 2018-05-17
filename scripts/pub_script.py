@@ -47,7 +47,7 @@ if sys.version_info < (3, 5):
 else:
     from asyncio import ensure_future
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 
 def _gen_client_id():

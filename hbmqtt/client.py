@@ -55,7 +55,7 @@ class ClientContext(BaseContext):
         self.config = None
 
 
-base_logger = logging.getLogger(__name__)
+base_logger = logging.getLogger("MyLogger")
 
 
 def mqtt_connected(func):
@@ -87,7 +87,7 @@ class MQTTClient:
     """
 
     def __init__(self, client_id=None, config=None, loop=None):
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger("MyLogger")
         self.config = _defaults
         if config is not None:
             self.config.update(config)

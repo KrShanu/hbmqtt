@@ -157,7 +157,7 @@ class StreamWriterAdapter(WriterAdapter):
     Because API is very close, this class is trivial
     """
     def __init__(self, writer: StreamWriter):
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger("MyLogger")
         self._writer = writer
 
     def write(self, data):

@@ -11,7 +11,7 @@ from hbmqtt.mqtt.constants import QOS_1, QOS_2
 # by the broker.
 #
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 
 @asyncio.coroutine

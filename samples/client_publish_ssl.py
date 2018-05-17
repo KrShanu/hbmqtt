@@ -10,7 +10,7 @@ from hbmqtt.mqtt.constants import QOS_1, QOS_2
 # Debug outputs shows the message flows
 #
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 config = {
     'will': {

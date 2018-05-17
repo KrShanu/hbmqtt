@@ -3,7 +3,7 @@ import asyncio
 import os
 from hbmqtt.broker import Broker
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 config = {
     'listeners': {

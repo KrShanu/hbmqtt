@@ -20,7 +20,7 @@ class TestAnonymousAuthPlugin(unittest.TestCase):
 
     def test_allow_anonymous(self):
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'auth': {
                 'allow-anonymous': True
@@ -34,7 +34,7 @@ class TestAnonymousAuthPlugin(unittest.TestCase):
 
     def test_disallow_anonymous(self):
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'auth': {
                 'allow-anonymous': False
@@ -48,7 +48,7 @@ class TestAnonymousAuthPlugin(unittest.TestCase):
 
     def test_allow_nonanonymous(self):
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'auth': {
                 'allow-anonymous': False
@@ -67,7 +67,7 @@ class TestFileAuthPlugin(unittest.TestCase):
 
     def test_allow(self):
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'auth': {
                 'password-file': os.path.join(os.path.dirname(os.path.realpath(__file__)), "passwd")
@@ -82,7 +82,7 @@ class TestFileAuthPlugin(unittest.TestCase):
 
     def test_wrong_password(self):
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'auth': {
                 'password-file': os.path.join(os.path.dirname(os.path.realpath(__file__)), "passwd")
@@ -97,7 +97,7 @@ class TestFileAuthPlugin(unittest.TestCase):
 
     def test_unknown_password(self):
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'auth': {
                 'password-file': os.path.join(os.path.dirname(os.path.realpath(__file__)), "passwd")

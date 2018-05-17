@@ -41,7 +41,7 @@ from docopt import docopt
 from hbmqtt.mqtt.constants import QOS_0
 from hbmqtt.utils import read_yaml_config
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 
 def _gen_client_id():

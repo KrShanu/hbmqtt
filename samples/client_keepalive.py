@@ -10,7 +10,7 @@ from hbmqtt.client import MQTTClient
 #
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("MyLogger")
 
 config = {
     'keep_alive': 5,

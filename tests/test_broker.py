@@ -33,7 +33,7 @@ else:
 
 formatter = "[%(asctime)s] %(name)s {%(filename)s:%(lineno)d} %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.DEBUG, format=formatter)
-log = logging.getLogger(__name__)
+log = logging.getLogger("MyLogger")
 
 test_config = {
     'listeners': {

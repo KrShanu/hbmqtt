@@ -21,7 +21,7 @@ class TestSQLitePlugin(unittest.TestCase):
     def test_create_tables(self):
         dbfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test.db")
         context = BaseContext()
-        context.logger = logging.getLogger(__name__)
+        context.logger = logging.getLogger("MyLogger")
         context.config = {
             'persistence': {
                 'file': dbfile
@@ -40,7 +40,7 @@ class TestSQLitePlugin(unittest.TestCase):
     # def test_save_session(self):
     #     dbfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test.db")
     #     context = BaseContext()
-    #     context.logger = logging.getLogger(__name__)
+    #     context.logger = logging.getLogger("MyLogger")
     #     context.config = {
     #         'persistence': {
     #             'file': dbfile
