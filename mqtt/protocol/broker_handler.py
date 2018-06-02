@@ -179,11 +179,12 @@ class BrokerProtocolHandler(ProtocolHandler):
         incoming_session.will_topic = connect.will_topic
         incoming_session.will_message = connect.will_message
         incoming_session.username = connect.username
-        incoming_session.password = connect.password #add session address and port
+        incoming_session.password = connect.password
+        incoming_session.remote_address,incoming_session.remote_port = writer.get_peer_info()
         if connect.keep_alive > 0:
             incoming_session.keep_alive = connect.keep_alive
         else:
             incoming_session.keep_alive = 0
 
         handler = cls(plugins_manager, loop=loop)
-        return handler, incoming_session
+        return handler, incoming_session, connect

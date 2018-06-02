@@ -66,7 +66,7 @@ class RetainedApplicationMessage:
 
 class Server:
     def __init__(self, listener_name, server_instance, max_connections=-1, loop=None):
-        self.logger = logging.getLogger("MyLogger")
+        self.logger = logging.getLogger(__name__)
         self.instance = server_instance
         self.conn_count = 0
         self.listener_name = listener_name
@@ -154,7 +154,7 @@ class Broker:
     states = ['new', 'starting', 'started', 'not_started', 'stopping', 'stopped', 'not_stopped', 'stopped']
 
     def __init__(self, config=None, loop=None, plugin_namespace=None):
-        self.logger = logging.getLogger("MyLogger")
+        self.logger = logging.getLogger(__name__)
         self.config = _defaults
         if config is not None:
             self.config.update(config)
@@ -353,8 +353,11 @@ class Broker:
         self.logger.info("Connection from %s:%d on listener '%s'" % (remote_address, remote_port, listener_name))
 
         # Wait for first packet and expect a CONNECT
+        logh = logging.getLogger("logh")
         try:
-            handler, client_session = yield from BrokerProtocolHandler.init_from_connect(reader, writer, self.plugins_manager, loop=self._loop)
+            handler, client_session, connect1 = yield from BrokerProtocolHandler.init_from_connect(reader, writer, self.plugins_manager, loop=self._loop)
+            smsg = str(remote_address)+":"+str(remote_port)+"::"+str(connect1)	    
+            logh.info(smsg)
         except HBMQTTException as exc:
             self.logger.warning("[MQTT-3.1.0-1] %s: Can't read first packet an CONNECT: %s" %
                                 (format_client_message(address=remote_address, port=remote_port), exc))

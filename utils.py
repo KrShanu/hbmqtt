@@ -6,7 +6,7 @@ import logging
 import yaml
 
 
-logger = logging.getLogger("MyLogger")
+logger = logging.getLogger(__name__)
 
 
 def not_in_dict_or_none(dict, key):

@@ -53,7 +53,8 @@ class ProtocolHandler:
     """
 
     def __init__(self, plugins_manager: PluginManager, session: Session=None, loop=None):
-        self.logger = logging.getLogger("MyLogger")
+        self.logger = logging.getLogger(__name__)
+        self.loggerh = logging.getLogger("logh")
         if session:
             self._init_session(session)
         else:
@@ -78,7 +79,7 @@ class ProtocolHandler:
 
     def _init_session(self, session: Session):
         assert session
-        log = logging.getLogger("MyLogger")
+        log = logging.getLogger(__name__)
         self.session = session
         self.logger = logging.LoggerAdapter(log, {'client_id': self.session.client_id})
         self.keepalive_timeout = self.session.keep_alive
@@ -383,6 +384,8 @@ class ProtocolHandler:
                     else:
                         cls = packet_class(fixed_header)
                         packet = yield from cls.from_stream(self.reader, fixed_header=fixed_header)
+                        smsg = str(self.session.remote_address)+":"+str(self.session.remote_port)+"::"+str(packet)
+                        self.loggerh.info(smsg)
                         yield from self.plugins_manager.fire_event(
                             EVENT_MQTT_PACKET_RECEIVED, packet=packet, session=self.session)
                         task = None
